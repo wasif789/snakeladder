@@ -40,7 +40,7 @@ namespace snakeladderprob
                     playerPos -= rollDice;
                 }
             }
-            else if (playerPos + rollDice == 100 && list[pos] == "Ladder")
+            else if (playerPos + rollDice == 100)
             {
                 playerPos += rollDice;
 
@@ -55,7 +55,7 @@ namespace snakeladderprob
             Console.WriteLine("Player current position : " + playerPos);
             count++;
             Console.WriteLine("Final position is :" + playerPos);
-            Console.WriteLine("Total MOves:" + count);
+            Console.WriteLine("number of times:" + count);
         }
     }
 }
