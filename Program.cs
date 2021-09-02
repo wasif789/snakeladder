@@ -10,32 +10,38 @@ namespace snakeladderprob
     {
         static void Main(string[] args)
         {
+            //local variable
+            int rollDice, playerPos = 0;
 
-            int playerPos = 0, rollDice;
-            //creates random number for rolling dice
+            //To generate random number
             Random random = new Random();
-            rollDice = random.Next(1, 7);
-            Console.WriteLine("Rolled Dice number is:" + rollDice);
-            // print user option
-            Console.WriteLine("Player Option 1.No Play 2.Ladder 3.Snake");
+            //List to check options
             var list = new List<string> { "No Play", "Ladder", "Snake" };
-            //check user option
-            int pos = random.Next(list.Count);
-            //condition based on user option
-            if (list[pos] == "Ladder")
+
+            //Conditions for user options
+            rollDice = random.Next(1, 7);
+            Console.WriteLine("Dice number is : " + rollDice);
+
+            //Print user options
+            Console.WriteLine("Player checks options 1.No Play  2.Ladder   3.Snake");
+
+            //Use random to check user option
+            int index = random.Next(list.Count);
+            Console.WriteLine("Player option is : " + list[index]);
+            if (playerPos + rollDice < 100)
             {
-                playerPos += rollDice;
-
+                if (list[index] == "Ladder") playerPos += rollDice;
+                if (list[index] == "Snake") playerPos -= rollDice;
             }
-            else if (list[pos] == "Snake")
+
+            if (playerPos < 0)
             {
-                playerPos -= rollDice;
-
+                playerPos = 0;
             }
-
-            //print result of playerposition and dice rolled
-            Console.WriteLine("Player option:" + list[pos]);
-            Console.WriteLine("player updated position:" + playerPos);
+            //Print to Console
+            Console.WriteLine("\n");
+            Console.WriteLine("Player current position : " + playerPos);
+            Console.WriteLine("Final position is :" + playerPos);
         }
     }
 }
